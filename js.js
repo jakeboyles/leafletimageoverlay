@@ -1,12 +1,20 @@
-var map = L.map('mapid').setView([32.5433984, -117.0387697], 19);
+var map = L.map('mapid').setView([32.5433014, -117.0382397], 20);
 
 
-var greenIcon = L.icon({
+var bathroom = L.icon({
   iconUrl: './bathroom.png',
   iconSize:     [40, 42], // size of the icon
   iconAnchor:   [20, 27], // point of the icon which will correspond to marker's location
   popupAnchor:  [-3, -26] // point from which the popup should open relative to the iconAnchor
 });
+
+var here = L.icon({
+  iconUrl: './here.png',
+  iconSize:     [60, 62], // size of the icon
+  iconAnchor:   [30, 31], // point of the icon which will correspond to marker's location
+  popupAnchor:  [-3, -26] // point from which the popup should open relative to the iconAnchor
+});
+
 
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -23,7 +31,6 @@ var	bounds = new L.LatLngBounds(
   new L.LatLng(32.542233, -117.039202),
   // TOP RIGHT
   new L.LatLng(32.543899, -117.036499));
-map.fitBounds(bounds);
 var overlay = new L.ImageOverlay("./image.png", bounds, {
   opacity: 1,
   interactive: true,
@@ -31,10 +38,13 @@ var overlay = new L.ImageOverlay("./image.png", bounds, {
 });
 map.addLayer(overlay);
 
-L.marker([32.543213, -117.037664], {icon: greenIcon}).addTo(map).bindPopup("Bathroom is in the back of the arcade");
+L.marker([32.543213, -117.037664], {icon: bathroom}).addTo(map).bindPopup("Bathroom is in the back of the arcade");
 
-L.marker([32.543313, -117.03799], {icon: greenIcon}).addTo(map).bindPopup("Bathroom is located in shoe lounge.");
+L.marker([32.543313, -117.03799], {icon: bathroom}).addTo(map).bindPopup("Bathroom is located in shoe lounge.");
 
-L.marker([32.543113, -117.03842], {icon: greenIcon}).addTo(map).bindPopup("Located next to Asiacs.");
+L.marker([32.543113, -117.03842], {icon: bathroom}).addTo(map).bindPopup("Located next to Asiacs.");
+
+L.marker([32.543493, -117.03852], {icon: here}).addTo(map).bindPopup("You are here!");
+
 
 
